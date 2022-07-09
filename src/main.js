@@ -1,10 +1,13 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-import My from '@/views/My'
-import Classification from '@/views/classification'
-import HomePage from '@/views/homePage'
-import Order from '@/views/order'
+import HomePage from '@/views/second/homepage'
+import Journalism from '@/views/second/Journalism'
+import Sports from '@/views/second/Sports'
+
+import Sports1 from '@/views/second/childrenViews/Sports1'
+import Sports2 from '@/views/second/childrenViews/Sports2'
+import Sports3 from '@/views/second/childrenViews/Sports3'
 
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
@@ -15,20 +18,34 @@ const routes = [
     redirect: '/homePage',
   },
   {
-    path: '/homePage',
+    path: '/homepage',
     component: HomePage,
   },
   {
-    path: '/order',
-    component: Order,
+    path: '/Journalism',
+    component: Journalism,
   },
   {
-    path: '/classification',
-    component: Classification,
-  },
-  {
-    path: '/my',
-    component: My,
+    path: '/Sports',
+    component: Sports,
+    children: [
+      {
+        path: '/',
+        redirect: '/Sports/Sports1',
+      },
+      {
+        path: '/Sports/Sports1',
+        component: Sports1,
+      },
+      {
+        path: '/Sports/Sports2',
+        component: Sports2,
+      },
+      {
+        path: '/Sports/Sports3',
+        component: Sports3,
+      },
+    ],
   },
 ]
 
